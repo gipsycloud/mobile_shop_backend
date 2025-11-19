@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import { setupSwagger } from './config/swagger';
+
+import authRoute from './routes/authRoutes';
 import userRoute from './routes/userRoute';
 
 dotenv.config();
@@ -12,6 +14,7 @@ app.use(express.json());
 
 setupSwagger(app);
 
+app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 
 app.get('/', (req, res) => {
