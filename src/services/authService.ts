@@ -16,10 +16,11 @@ export const registerUser = async (name: string, phone: string, email: string, p
   const hashedPassword = await hashPassword(password);
   const user = await prisma.user.create({
     data: {
-      name: email.split("@")[0],
-      phone: "",
+      // Use provided name and phone values (fallback to email local-part for name)
+      name: name || email.split("@")[0],
+      phone: phone || '',
       email,
-      password: hashedPassword
+      password: hashedPassword,
     },
   });
   return user;

@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 
-router.get('/protected', auth, (req, res) => {
+router.get('/protected', (req, res) => {
   res.json({ message: 'Protected route' });
 });
 

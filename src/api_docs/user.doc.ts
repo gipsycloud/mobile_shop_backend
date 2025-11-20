@@ -1,0 +1,33 @@
+export const userSwaggerDoc = {
+  "/api/users": {
+    get: {
+      tags: ["Users"],
+      summary: "Get all users",
+      responses: {
+        "200": {
+          description: "A list of users",
+          content: {
+            "application/json": {
+              schema: {
+                type: "array",
+                items: {
+                  type: "object",
+                  properties: {
+                    id: {
+                      type: "integer",
+                      example: 1,
+                    },
+                    name: {
+                      type: "string",
+                      example: "Aung",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    }
+  }
+}

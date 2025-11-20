@@ -4,8 +4,10 @@ import * as authService from "../services/authService";
 export const registerUser = async (req: Request, res: Response) => {
   try {
     const { name, phone, email, password } = req.body;
-    await authService.registerUser(name, phone, email, password);
-    res.json({ msg: "User registered successfully" });
+    const user = await authService.registerUser(name, phone, email, password);
+    // Do not return password
+    const { password: _pw, ...userSafe } = user as any;
+    res.status(201).json({ msg: "User registered successfully", user: userSafe });
   } catch (err) {
     res.status(400).json({ error: (err as Error).message });
   }
