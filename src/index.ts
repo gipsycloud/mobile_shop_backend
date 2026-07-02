@@ -20,6 +20,4 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
-}); for (let i = 0; i < 5; i++) {
-  console.log('Hello world!');
-}
+});
